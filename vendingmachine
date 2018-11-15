@@ -1,0 +1,82 @@
+import java.util.Scanner;
+import java.lang.*;
+import java.io.*;
+public class vendingmachine {
+
+	public static int Quantity()
+	{  Scanner s=new Scanner(System.in);
+	     int n,price1=0;
+		System.out.println("1.100ml \t\t\t\t Price:€1,00");
+		System.out.println("2.200ml \t\t\t\t Price:€2,00");
+		System.out.println("5.000ml \t\t\t\t Price:€4,00");
+		n=s.nextInt();
+		if(n==1)
+			price1=1;
+		if(n==2)
+			price1=2;
+		if(n==3)
+			price1=4;
+		return price1;
+	}
+
+
+	public static void main(String[] args) {
+		 int c,count,bill=0,bill1=0,bill2=0,bill3=0,bill4=0,price,amount,extra,quantity=0;
+		  Scanner s=new Scanner(System.in);
+		System.out.println("*********selectie*********");
+		System.out.println("1.Cola");
+		System.out.println("2.Sprite");
+		System.out.println("3.Fanta");
+		System.out.println("4.Water ");
+		System.out.println("5.Exit");
+		System.out.println("6.Betalen");
+
+		while(true){
+		System.out.println("voer uw keuze in");
+
+		c=s.nextInt();
+       switch(c)
+       {
+       case 1: System.out.println("Geef het aantal op");
+                price=Quantity();
+                System.out.println("Het aantal flesjes?");
+                 count=s.nextInt();
+                 bill1+=count*price;
+				 break;
+		case 2:	System.out.println("Geef het aantal op");
+                price=Quantity();
+                System.out.println("Het aantal flesjes?");
+                 count=s.nextInt();
+                 bill2+=count*price;
+				 break;
+        case 3:System.out.println("Geef het aantal op");
+                price=Quantity();
+                System.out.println("Het nummer qua flesjes?");
+                 count=s.nextInt();
+                 bill3+=count*price;
+				 break;
+	    case 4:System.out.println("Geef het aantal op");
+                price=Quantity();
+                System.out.println("Het aantal flesjes?");
+                 count=s.nextInt();
+                 bill4+=count*price;
+				 break;
+		case 5:System.out.println("order is gecancelled");
+		       System.exit(0);
+		case 6:System.out.println("Voer het aantal in");
+		        amount=s.nextInt();
+				while(amount<bill)
+				{
+					System.out.println("voer het geld in"+(bill-amount)+"€");
+				    extra=s.nextInt();
+					amount=amount+extra;
+				}
+				 if(amount==bill)
+					 System.out.println("Bedankt! VisitAgain!/Kom gauw terug!");
+				if(amount>bill)
+					System.out.println("Graag het drinken eruit halen"+(amount-bill)+"€");
+				System.exit(0);
+       }
+	   bill=bill1+bill2+bill3+bill4;
+	   System.out.println("Rekening:€"+bill);	}
+	 }
